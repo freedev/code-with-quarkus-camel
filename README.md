@@ -10,10 +10,19 @@ First you need a Azure Service Bus. You can follow the instructions from the [Az
 ## Configuration
 
 From the Azure Portal:
-- create a Service Bus
+- create a Service Bus - 
 - create a Service Bus Topic
 - create a Service Bus Subscription
 - create a Shared access policy and copy the connection string
+
+Then configure properly the file `src/main/resources/application.properties` fixing the:
+- `topic-name`
+- `topic-name-subcription`
+- and `connectionString` parameter
+
+```
+mp.messaging.incoming.source-in.endpoint-uri=azure-servicebus:topic-name?subscriptionName=topic-name-subscription&amqpTransportType=AmqpWebSockets&serviceBusType=topic&connectionString=Endpoint=sb://my-azuresb.servicebus.windows.net/;SharedAccessKeyName=camelTest;SharedAccessKey=XXXXXXXXXXXXXXXX=;EntityPath=topic-name
+```
 
 ## Start the application
 
