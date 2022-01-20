@@ -37,8 +37,7 @@ Then, looking at the output you can see messages successfully read from a Azure 
 
 The application is composed by 1 components:
 
-
-* `MyReactiveMessagingApplication` - a bean receiving topic message.
+* `MyReactiveMessagingApplication` - a bean receiving topic messages.
 
 The interaction with Azure Service Bus is managed by MicroProfile Reactive Messaging.
 
