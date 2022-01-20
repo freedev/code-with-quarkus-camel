@@ -1,61 +1,43 @@
-# code-with-quarkus-smallrye-camel Project
+Azure Service Bus Quickstart
+================
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+This project illustrates how you can interact with Azure Service Bus using (MicroProfile Reactive Messaging)[https://github.com/freedev/smallrye-reactive-messaging].
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## Azure Service Bus
 
-## Running the application in dev mode
+First you need a Azure Service Bus. You can follow the instructions from the [Azure Service Bus Documentation](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview) .
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
-```
+## Configuration
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+From the Azure Portal:
+- create a Service Bus
+- create a Service Bus Topic
+- create a Service Bus Subscription
+- create a Shared access policy and copy the connection string
 
-## Packaging and running the application
+## Start the application
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+The application can be started using:
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+```bash
+mvn package quarkus:dev
+```  
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
+Then, looking at the output you can see messages successfully send to and read from a Azure Service Bus topic.
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+[//]: # (## Anatomy)
 
-## Creating a native executable
+[//]: # ()
+[//]: # (In addition to the commandline output, the application is composed by 3 components:)
 
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
+[//]: # ()
+[//]: # (* `BeanUsingAnEmitter` - a bean sending a changing hello message to kafka topic every second.)
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
+[//]: # (* `Sender` - a bean sending a fixed message to a kafka topic every 5 seconds.)
 
-You can then execute your native executable with: `./target/code-with-quarkus-1.0.0-SNAPSHOT-runner`
+[//]: # (* `Receiver`  - on the consuming side, the `Receiver` retreives messages from a kafka topic and writes the message content to `stdout`.)
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
+[//]: # ()
+[//]: # (The interaction with Kafka is managed by MicroProfile Reactive Messaging.)
 
-## Related Guides
-
-- SmallRye Reactive Messaging - Kafka Connector ([guide](https://quarkus.io/guides/kafka-reactive-getting-started)): Connect to Kafka with Reactive Messaging
-
-## Provided Code
-
-### Reactive Messaging codestart
-
-Use SmallRye Reactive Messaging
-
-[Related Apache Kafka guide section...](https://quarkus.io/guides/kafka-reactive-getting-started)
-
+[//]: # (The configuration is located in the microprofile config properties.)
