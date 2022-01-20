@@ -31,7 +31,7 @@ The application can be started using:
 mvn package quarkus:dev
 ```  
 
-Then, looking at the output you can see messages successfully send to and read from a Azure Service Bus topic.
+Then, looking at the output you can see messages successfully read from a Azure Service Bus topic.
 
 [//]: # (## Anatomy)
 
