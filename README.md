@@ -10,10 +10,9 @@ First you need a Azure Service Bus. You can follow the instructions from the [Az
 ## Configuration
 
 From the Azure Portal:
-- create a Service Bus - 
-- create a Service Bus Topic
-- create a Service Bus Subscription
-- create a Shared access policy and copy the connection string
+- [create a Service Bus - Azure Documentation](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-create-namespace-portal)
+- [create a Service Bus Topic and Subscription - Azure Documentation](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal)
+- [create a Shared access policy and copy the connection string](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal#get-the-connection-string)
 
 Then configure properly the file `src/main/resources/application.properties` fixing the:
 - `topic-name`
