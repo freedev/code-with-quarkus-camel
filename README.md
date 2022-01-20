@@ -33,19 +33,13 @@ mvn package quarkus:dev
 
 Then, looking at the output you can see messages successfully read from a Azure Service Bus topic.
 
-[//]: # (## Anatomy)
+## Anatomy
 
-[//]: # ()
-[//]: # (In addition to the commandline output, the application is composed by 3 components:)
+The application is composed by 1 components:
 
-[//]: # ()
-[//]: # (* `BeanUsingAnEmitter` - a bean sending a changing hello message to kafka topic every second.)
 
-[//]: # (* `Sender` - a bean sending a fixed message to a kafka topic every 5 seconds.)
+* `MyReactiveMessagingApplication` - a bean receiving topic message.
 
-[//]: # (* `Receiver`  - on the consuming side, the `Receiver` retreives messages from a kafka topic and writes the message content to `stdout`.)
+The interaction with Azure Service Bus is managed by MicroProfile Reactive Messaging.
 
-[//]: # ()
-[//]: # (The interaction with Kafka is managed by MicroProfile Reactive Messaging.)
-
-[//]: # (The configuration is located in the microprofile config properties.)
+The configuration is located in the microprofile config properties the file `src/main/resources/application.properties`.
